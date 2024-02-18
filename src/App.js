@@ -5,7 +5,7 @@ import HomePage from "./pages/HomePage";
 import useWeatherHandler from "./scripts/useWeatherHandler";
 import Loader from "./components/Loader";
 import useLocationHandler from "./scripts/useLocationHandler";
-import { ToastContainer, toast } from 'react-toastify';
+import { ToastContainer, toast } from "react-toastify";
 
 function App() {
   const [input, setInput] = useState("");
@@ -45,7 +45,6 @@ function App() {
     }
   };
 
-
   useEffect(() => {
     getWeatherReport(
       cityName,
@@ -54,13 +53,12 @@ function App() {
       setIsLoading,
       setErrorMessage
     );
-  }, [input]);
+  }, [input, searchCity]);
 
   useEffect(() => {
     getUserGeoLocation();
   }, []);
 
-  console.log(errorMessage);
   return (
     <div className="bg-gradient-to-r from-white to-blue-200">
       <Header input={input} setInput={setInput} />
