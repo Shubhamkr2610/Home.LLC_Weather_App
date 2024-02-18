@@ -5,6 +5,7 @@ import HomePage from "./pages/HomePage";
 import useWeatherHandler from "./scripts/useWeatherHandler";
 import Loader from "./components/Loader";
 import useLocationHandler from "./scripts/useLocationHandler";
+import { ToastContainer, toast } from 'react-toastify';
 
 function App() {
   const [input, setInput] = useState("");
@@ -33,14 +34,14 @@ function App() {
         },
         (error) => {
           if (error?.code === error?.PERMISSION_DENIED) {
-            alert(
+            toast.warn(
               "GeoLocation request denied. Please reset location permission to grant access again."
             );
           }
         }
       );
     } else {
-      console.log("Geolocation is not supported by this browser.");
+      toast.error("Geolocation is not supported by this browser.");
     }
   };
 
@@ -76,6 +77,17 @@ function App() {
       ) : (
         <HomePage weatherData={weatherData} forecastData={forecastData} />
       )}
+      <ToastContainer
+        position="top-right"
+        autoClose={3000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+      />
     </div>
   );
 }
