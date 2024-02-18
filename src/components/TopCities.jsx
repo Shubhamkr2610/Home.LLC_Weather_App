@@ -10,7 +10,7 @@ const TopCities = ({ setSearchCity, cityName, setInput }) => {
   };
 
   return (
-    <div className="w-full h-auto lg:h-20 px-4 py-[2px] flex justify-center items-center flex-wrap gap-[3px] md:gap-4 text-white bg-[#0f62fe] rounded-lg">
+    <div className="w-full h-auto xl:h-20 px-4 py-[2px] flex justify-center items-center flex-wrap gap-[3px] md:gap-4 text-white bg-[#0f62fe] rounded-lg">
       {topCitiesName.map((citiItem) => {
         return (
           <button
