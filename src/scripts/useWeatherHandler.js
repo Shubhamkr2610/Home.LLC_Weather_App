@@ -1,4 +1,5 @@
 import axios from "axios";
+import { APP_BASE_URL, APP_ID, endpoints } from "../constants";
 
 const useWeatherHandler = () => {
 
@@ -8,19 +9,18 @@ const useWeatherHandler = () => {
     setForecastData,
     setIsLoading
   ) => {
-
     const cityName = searchCity.trim();
     if (!cityName) return;
 
     try {
       setIsLoading(true);
       const response = await axios.get(
-        `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=0378eac035083a0436a721453604ca94&units=metric`
+        `${APP_BASE_URL}${endpoints.weather}?q=${cityName}&appid=${APP_ID}&units=metric`
       );
       setWeatherData(response?.data);
       if (response?.data) {
         const data = await axios.get(
-          `https://api.openweathermap.org/data/2.5/forecast?q=${cityName}&appid=0378eac035083a0436a721453604ca94&units=metric`
+          `${APP_BASE_URL}${endpoints.forecast}?q=${cityName}&appid=${APP_ID}&units=metric`
         );
         setForecastData(data?.data);
       }
