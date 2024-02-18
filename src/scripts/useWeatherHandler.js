@@ -1,13 +1,17 @@
 import axios from "axios";
-import { APP_BASE_URL, APP_ID, endpoints } from "../constants";
+import {
+  GEO_CODING_API_BASE_URL,
+  GEO_CODING_API_KEY,
+  endpoints,
+} from "../constants";
 
 const useWeatherHandler = () => {
-
   const getWeatherReport = async (
     searchCity,
     setWeatherData,
     setForecastData,
-    setIsLoading
+    setIsLoading,
+    setErrorMessage
   ) => {
     const cityName = searchCity.trim();
     if (!cityName) return;
@@ -15,18 +19,22 @@ const useWeatherHandler = () => {
     try {
       setIsLoading(true);
       const response = await axios.get(
-        `${APP_BASE_URL}${endpoints.weather}?q=${cityName}&appid=${APP_ID}&units=metric`
+        `${GEO_CODING_API_BASE_URL}${endpoints.weather}?q=${cityName}&appid=${GEO_CODING_API_KEY}&units=metric`
       );
+      if (response.status !== 200) {
+        // setIsLoading(false);
+        return;
+      }
       setWeatherData(response?.data);
       if (response?.data) {
         const data = await axios.get(
-          `${APP_BASE_URL}${endpoints.forecast}?q=${cityName}&appid=${APP_ID}&units=metric`
+          `${GEO_CODING_API_BASE_URL}${endpoints.forecast}?q=${cityName}&appid=${GEO_CODING_API_KEY}&units=metric`
         );
         setForecastData(data?.data);
       }
       setIsLoading(false);
     } catch (error) {
-      console.log(error);
+      setErrorMessage(error.response.data.message);
       setIsLoading(false);
     }
   };
