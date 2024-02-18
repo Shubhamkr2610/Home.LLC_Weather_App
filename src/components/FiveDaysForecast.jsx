@@ -2,9 +2,10 @@ import React from "react";
 import { getFormattedDate } from "../scripts/utils";
 
 const FiveDaysForecast = ({ forecastData }) => {
+  if(!forecastData?.list?.length) return
   const uniqueForecastDays = new Set();
 
-  const uniqueForecastData = forecastData.list.filter((item) => {
+  const uniqueForecastData = forecastData?.list?.filter((item) => {
     const forecastDate = new Date(item.dt_txt).getDate();
     if (!uniqueForecastDays.has(forecastDate)) {
       uniqueForecastDays.add(forecastDate);
@@ -22,7 +23,7 @@ const FiveDaysForecast = ({ forecastData }) => {
       <div className="">
         {uniqueForecastData?.slice(1)?.map((item, index) => {
           return (
-            <div className="grid grid-cols-4 lg:grid-cols-2 justify-center items-center">
+            <div key={index} className="grid grid-cols-4 lg:grid-cols-2 justify-center items-center">
             {/* flex justify-center items-center gap-3 */}
               <p className=" text-lg xl:text-2xl font-bold text-center">
                 {Math.trunc(item?.main?.temp)} &deg;C

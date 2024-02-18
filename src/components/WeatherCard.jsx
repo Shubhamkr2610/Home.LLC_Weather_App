@@ -46,13 +46,16 @@ const WeatherCard = ({ temperature, windSpeed, sunCycle, weatherPng }) => {
           </div>
         </div>
       </div>
-      <div className="flex flex-col justify-center items-center gap-2 lg:gap-6">
-        <img
-          className="w-16 h-16 lg:w-[120px] lg:h-[120px] object-contain"
-          src={`http://openweathermap.org/img/w/${weatherPng[0].icon}.png`}
-        />
-        <p className="text-4xl font-semibold">{weatherPng[0].main}</p>
-      </div>
+      {!!weatherPng?.length && (
+        <div className="flex flex-col justify-center items-center gap-2 lg:gap-6">
+          <img
+            className="w-16 h-16 lg:w-[120px] lg:h-[120px] object-contain"
+            src={`http://openweathermap.org/img/w/${weatherPng[0].icon}.png`}
+          />
+          <p className="text-4xl font-semibold">{weatherPng[0].main}</p>
+        </div>
+      )}
+
       <div className="h-full grid gap-2 lg:gap-6 grid-cols-2 items-center ">
         <div className="flex flex-col items-center">
           <WiHumidity size={"3em"} />
