@@ -34,6 +34,7 @@ const useWeatherHandler = () => {
       }
       setIsLoading(false);
     } catch (error) {
+      setWeatherData(null)
       setErrorMessage(error.response.data.message);
       setIsLoading(false);
     }
