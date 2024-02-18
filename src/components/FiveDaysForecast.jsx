@@ -15,15 +15,15 @@ const FiveDaysForecast = ({ forecastData }) => {
   });
 
   return (
-    <div className="w-6/12 h-full p-6 flex flex-col items-center justify-start gap-2 rounded-[30px] text-white bg-[#0f62fe]  shadow-[4.0px_8.0px_8.0px_rgba(0,0,0,0.38)]">
-      <div className="text-4xl font-bold">4 Days Forecast:</div>
+    <div className="w-full lg:w-6/12 h-full p-4 lg:p-6 flex flex-col items-center justify-start gap-2 rounded-[30px] text-white bg-[#0f62fe]  shadow-[4.0px_8.0px_8.0px_rgba(0,0,0,0.38)]">
+      <div className="text-3xl xl:text-4xl font-bold">{uniqueForecastData.slice(1).length} Days Forecast:</div>
       {uniqueForecastData.slice(1).map((item, index) => {
         return (
           <div key={index} className="flex justify-center items-center gap-3">
-            <p className="text-2xl font-bold">
+            <p className="text-lg xl:text-2xl font-bold">
               {Math.trunc(item?.main?.temp)} &deg;C
             </p>
-            <p className="text-xl font-bold">
+            <p className="text-base xl:text-xl font-bold">
               {getFormattedDate(item.dt).day}, {getFormattedDate(item.dt).date}{" "}
               {getFormattedDate(item.dt).month}
             </p>
