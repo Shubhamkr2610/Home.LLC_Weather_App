@@ -73,7 +73,7 @@ function App() {
           </h1>
         </div>
       ) : (
-        <HomePage weatherData={weatherData} forecastData={forecastData} />
+        <HomePage weatherData={weatherData} forecastData={forecastData} cityName={cityName} setSearchCity={setSearchCity} setInput={setInput}/>
       )}
       <ToastContainer
         position="top-right"

@@ -9,3 +9,13 @@ export const endpoints = {
   forecast: "/forecast",
   reverse: "/reverse",
 };
+export const topCitiesName = [
+  "Delhi",
+  "Mumbai",
+  "Chennai",
+  "Pune",
+  "Hyderabad",
+  "Bengaluru",
+  "Kolkata",
+  "Patna",
+];
