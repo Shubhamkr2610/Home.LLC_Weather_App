@@ -17,7 +17,7 @@ function App() {
 
   const getWeatherReport = useWeatherHandler();
   const getCityByLatLong = useLocationHandler();
-  const cityName = input ? input : searchCity;
+  const cityName = input ? input.charAt(0).toUpperCase() + input.slice(1) : searchCity;
 
   const getUserGeoLocation = () => {
     if (navigator?.geolocation) {
