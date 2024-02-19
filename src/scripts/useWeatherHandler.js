@@ -25,6 +25,7 @@ const useWeatherHandler = () => {
         // setIsLoading(false);
         return;
       }
+      setErrorMessage("");
       setWeatherData(response?.data);
       if (response?.data) {
         const data = await axios.get(
