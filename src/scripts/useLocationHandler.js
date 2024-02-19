@@ -19,8 +19,8 @@ const useLocationHandler = () => {
         `${GEO_LOCATION_API_BASE_URL}${endpoints.reverse}?lat=${latitude}&lon=${longitude}&appid=${GEO_CODING_API_KEY}`,
         {
           headers: {
-            Accept: "application/json"
-          },
+            'Content-Type': 'application/json'
+          }
         }
       );
       if (response.status !== 200) {
